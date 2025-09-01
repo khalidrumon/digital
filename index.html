@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NovaWave Digital — One Page Agency</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/>
+
+  <meta name="description" content="NovaWave Digital — modern one-page digital agency. Web design & development, UI/UX, mobile app design, content, SEO, marketing, SMM, virtual assistance." />
+
+  <style>
+    :root{
+      /* POPPIER, modern palette — still dark glass style */
+      --bg-1: #061028;
+      --bg-2: #0f1b3a;
+      --accent-1: #6c63ff;   /* vibrant indigo */
+      --accent-2: #00e6c3;   /* bright teal */
+      --accent-3: #ff6b6b;   /* coral */
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.03);
+      --muted: #b9c2ea;
+      --text: #e9eefc;
+      --radius: 18px;
+      --maxw: 1200px;
+      --shadow: 0 10px 30px rgba(3,6,20,.45);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:
+        radial-gradient(600px 400px at 10% 0%, rgba(108,99,255,0.12), transparent),
+        radial-gradient(500px 300px at 100% 40%, rgba(0,230,195,0.06), transparent),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    /* Header / Nav */
+    header{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(7,10,24,0.55), rgba(7,10,24,0.35));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px}
+    .brand i{color:var(--accent-2); font-size:20px}
+    nav ul{list-style:none; display:flex; gap:14px; margin:0; padding:0}
+    nav a{
+      color:var(--muted); text-decoration:none; font-weight:600;
+      padding:8px 12px; border-radius:10px; transition:all .18s ease;
+    }
+    /* more poppy hover */
+    nav a:hover{ color:#081027; background: linear-gradient(135deg, var(--accent-2), var(--accent-1)); transform:translateY(-4px); box-shadow: 0 8px 30px rgba(12,14,40,.45); }
+    nav a.active{ color:#081027; background: linear-gradient(135deg, var(--accent-2), var(--accent-1)); }
+
+    .menu-actions { display:flex; gap:10px; align-items:center }
+
+    /* Buttons */
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; font-weight:700; border:1px solid rgba(255,255,255,0.06); background:linear-gradient(135deg,var(--accent-2),var(--accent-1)); color:#081027; text-decoration:none }
+    .btn.secondary{ background:linear-gradient(135deg,var(--accent-1), #9aa0ff); color:#07102a }
+    .btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted) }
+    .btn.ghost:hover{ background: rgba(255,255,255,0.03); color:var(--text) }
+
+    /* Hero */
+    .hero{ padding:80px 0 60px; position:relative }
+    .hero-grid{ display:grid; grid-template-columns: 1.2fr .9fr; gap:28px; align-items:center }
+    .eyebrow{ display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; background: linear-gradient(90deg, rgba(108,99,255,0.12), rgba(0,230,195,0.08)); color:var(--muted); font-weight:700; font-size:13px }
+    .title{ font-size: clamp(32px, 5vw, 56px); margin:12px 0; line-height:1.04; font-weight:900}
+    .subtitle{ color:var(--muted); font-size:16px; max-width:720px }
+
+    .hero-cta{ margin-top:20px; display:flex; gap:12px; flex-wrap:wrap }
+
+    .hero-card{ padding:20px; border-radius:22px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.05); box-shadow:var(--shadow) }
+
+    .mock { border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.06); height:360px; position:relative; background: linear-gradient(180deg, rgba(12,18,44,0.6), rgba(8,12,28,0.4)); display:grid; place-items:center }
+    .mock img{ width:100%; height:100%; object-fit:cover; display:block }
+
+    /* Stats */
+    .hero-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px }
+    .stat{ padding:12px; border-radius:12px; background: linear-gradient(180deg, rgba(108,99,255,0.08), rgba(0,230,195,0.04)); border:1px solid rgba(255,255,255,0.04); text-align:center }
+    .stat .n{ font-size:20px; font-weight:900 }
+
+    /* Sections */
+    section{ padding:72px 0; }
+    .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:18px; margin-bottom:22px }
+    .section-head h2{ font-size: clamp(22px,3.2vw,36px); margin:0 }
+    .section-head p{ color:var(--muted); margin:0; max-width:720px }
+
+    /* Cards & grids */
+    .grid{ display:grid; gap:18px }
+    .three{ grid-template-columns: repeat(3, 1fr) }
+    .two{ grid-template-columns: repeat(2, 1fr) }
+    .card{ padding:18px; border-radius:16px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.05); transition: transform .22s ease, box-shadow .22s ease }
+    .card:hover{ transform:translateY(-8px); box-shadow: 0 20px 60px rgba(2,6,30,0.6) }
+    .icon{ width:52px; height:52px; border-radius:12px; display:grid; place-items:center; font-size:20px; color:#07102a; background: linear-gradient(135deg,var(--accent-1), #9aa0ff) }
+    .icon.teal{ background: linear-gradient(135deg,var(--accent-2), #6ff1d6) }
+    .icon.coral{ background: linear-gradient(135deg,var(--accent-3), #ff9a8a) }
+    .service-title{ margin:10px 0 6px; font-weight:800; font-size:18px }
+    .service-desc{ color:var(--muted); font-size:14px }
+
+    .tags{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap }
+    .tag{ padding:6px 10px; border-radius:999px; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04); font-size:13px; color:#e6ebff }
+
+    /* Why us */
+    .why{ display:grid; grid-template-columns: 1fr 420px; gap:22px; align-items:start }
+    .why li{ list-style:none; display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; color:var(--muted) }
+
+    /* Process: stylish timeline */
+    .process-wrap{ position:relative; padding:26px 0 }
+    .timeline{ display:flex; gap:20px; align-items:center; overflow:auto; padding-bottom:6px; scroll-snap-type:x mandatory }
+    .step{ scroll-snap-align:center; flex:0 0 260px; padding:18px; border-radius:14px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); text-align:left }
+    .step .num{ width:46px; height:46px; border-radius:12px; display:grid; place-items:center; font-weight:800; background: linear-gradient(135deg,var(--accent-2),var(--accent-1)); color:#08102a; margin-bottom:10px; }
+    .timeline::-webkit-scrollbar{ height:8px }
+    .timeline::-webkit-scrollbar-thumb{ background:rgba(255,255,255,0.06); border-radius:10px }
+
+    /* Recent works slider (cards similar to cases) */
+    .cases-slider{ position:relative; margin-top:20px }
+    .slides{ display:flex; gap:18px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom:8px }
+    .slide{ flex:0 0 320px; scroll-snap-align:center; border-radius:14px; overflow:hidden; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04) }
+    .slide img{ width:100%; height:190px; object-fit:cover; display:block }
+    .slide .content{ padding:12px }
+    .slide .meta{ display:flex; gap:8px; margin-top:10px }
+
+    .slider-controls{ display:flex; gap:10px; position:absolute; right:6px; top:-6px }
+
+    /* Reviews */
+    .reviews{ display:flex; gap:18px; overflow:auto; padding-bottom:8px; scroll-snap-type:x mandatory }
+    .review{ flex:0 0 320px; border-radius:16px; padding:16px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04) }
+
+    /* About */
+    .about p{ color:var(--muted) }
+
+    /* Quote form */
+    .quote-card{ display:grid; gap:12px; padding:18px; border-radius:16px; background: linear-gradient(180deg, rgba(108,99,255,0.07), rgba(0,230,195,0.03)); border:1px solid rgba(255,255,255,0.05) }
+    label{ font-weight:700; display:block; margin-bottom:6px }
+    input, textarea, select{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--text); outline:none }
+    textarea{ min-height:120px; resize:vertical }
+
+    /* Contact card */
+    .contact-grid{ display:grid; gap:14px; grid-template-columns: 1fr 1fr }
+    .contact-card{ padding:18px; border-radius:14px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04) }
+
+    /* Footer */
+    footer{ padding:26px 0; border-top:1px solid rgba(255,255,255,0.04); color:var(--muted) }
+    .footer-grid{ display:flex; gap:28px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap }
+    .footer-col{ min-width:220px; max-width:420px }
+    .footer-col h4{ color:var(--accent-1); margin-bottom:12px }
+
+    /* Back to top */
+    #backToTop{ position:fixed; right:18px; bottom:18px; width:52px; height:52px; border-radius:50%; display:grid; place-items:center; background:linear-gradient(135deg,var(--accent-1),var(--accent-2)); color:#08102a; border:none; box-shadow:var(--shadow); opacity:0; transform:translateY(12px); pointer-events:none; transition:.22s ease }
+    #backToTop.show{ opacity:1; transform:none; pointer-events:auto }
+
+    /* Reveal */
+    .reveal{ opacity:0; transform: translateY(18px); transition: .6s ease }
+    .reveal.in{ opacity:1; transform:none }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero-grid{ grid-template-columns: 1fr }
+      .why{ grid-template-columns: 1fr }
+      .three{ grid-template-columns: repeat(2, 1fr) }
+      .two{ grid-template-columns: 1fr }
+    }
+    @media (max-width:640px){
+      nav ul{ display:none }
+      .three{ grid-template-columns: 1fr }
+      .timeline, .slides, .reviews{ padding-left:6px }
+      .contact-grid{ grid-template-columns: 1fr }
+    }
+/* paste this at the end of the <style> block */
+#why .section-head {
+  flex-wrap: wrap;
+}
+#why .section-head h2,
+#why .section-head p {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand"><i class="fa-solid fa-bolt"></i><span>NovaWave <span style="color:var(--accent-2)">Digital</span></span></div>
+      <nav aria-label="Primary navigation">
+        <ul id="navlinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#cases">Work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><i class="fa-solid fa-sparkles"></i> Full-stack creative for ambitious brands</div>
+        <h1 class="title">We design, build & grow modern digital experiences that convert.</h1>
+        <p class="subtitle">Colorful and confident designs with performance-first code. We blend strategy, design, and engineering to ship products that move metrics.</p>
+
+        <div class="hero-cta">
+          <a class="btn" href="#services"><i class="fa-solid fa-grid-2"></i> Explore Services</a>
+          <a class="btn secondary" href="#quote"><i class="fa-regular fa-calendar-check"></i> Book a Discovery Call</a>
+        </div>
+
+        <div class="hero-stats" style="margin-top:20px;">
+          <div class="stat"><div class="n">250+</div><span style="color:var(--muted)">Projects Delivered</span></div>
+          <div class="stat"><div class="n">98%</div><span style="color:var(--muted)">Client Satisfaction</span></div>
+          <div class="stat"><div class="n">24/7</div><span style="color:var(--muted)">Priority Support</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="mock" aria-hidden="false">
+          <!-- hero image — reliable unsplash URL with parameters -->
+          <img src="https://i.postimg.cc/76GgKfV5/image.png" alt="Website preview screenshot">
+        </div>
+        <p style="color:var(--muted); margin-top:12px">Hand-crafted HTML, modern CSS, and lightweight JS — fast, accessible, and built to scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Services that ship outcomes</h2>
+        <p>From strategy to shipped product. We combine design thinking with technical execution to deliver delightful, measurable experiences.</p>
+      </div>
+
+      <div class="grid three reveal">
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-code"></i></div>
+          <h3 class="service-title">Web Design & Development</h3>
+          <p class="service-desc">Responsive websites built for speed, SEO and conversions — semantic HTML, modern CSS, and progressive enhancement.</p>
+          <div class="tags"><span class="tag">Landing Pages</span><span class="tag">Business Sites</span><span class="tag">Performance</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon teal"><i class="fa-solid fa-pen-ruler"></i></div>
+          <h3 class="service-title">UI / UX Design</h3>
+          <p class="service-desc">Wireframes to polished interfaces. We craft intuitive flows and visual systems that reduce friction and boost engagement.</p>
+          <div class="tags"><span class="tag">Wireframes</span><span class="tag">Design Systems</span><span class="tag">Prototyping</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon coral"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3 class="service-title">Mobile App Design</h3>
+          <p class="service-desc">Human-centred iOS & Android designs with platform-native patterns, accessibility, and motion to guide attention.</p>
+          <div class="tags"><span class="tag">iOS & Android</span><span class="tag">Micro-interactions</span><span class="tag">Accessibility</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3 class="service-title">Content Creation</h3>
+          <p class="service-desc">Design assets, short-form video, banners and on-brand visuals for web & socials.</p>
+          <div class="tags"><span class="tag">Video Scripts</span><span class="tag">Graphics</span><span class="tag">Email Assets</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon teal"><i class="fa-solid fa-arrow-trend-up"></i></div>
+          <h3 class="service-title">SEO Optimization</h3>
+          <p class="service-desc">Technical audits, on-page optimization and content strategy to lift organic visibility.</p>
+          <div class="tags"><span class="tag">Technical SEO</span><span class="tag">On-page</span><span class="tag">Schema</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon coral"><i class="fa-solid fa-feather"></i></div>
+          <h3 class="service-title">Content Writing</h3>
+          <p class="service-desc">Clear, persuasive copy for websites, blogs and ads — tone-matched to your brand and optimized for humans.</p>
+          <div class="tags"><span class="tag">Web Copy</span><span class="tag">Blog Posts</span><span class="tag">Ad Copy</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h3 class="service-title">Digital Marketing</h3>
+          <p class="service-desc">Campaign strategy and execution across search, social and email — focused on measurable ROI and iterative testing.</p>
+          <div class="tags"><span class="tag">PPC</span><span class="tag">Email</span><span class="tag">Analytics</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon teal"><i class="fa-brands fa-instagram"></i></div>
+          <h3 class="service-title">Social Media Management</h3>
+          <p class="service-desc">Content calendars, publishing and community management that build follower loyalty and engagement.</p>
+          <div class="tags"><span class="tag">Calendars</span><span class="tag">Community</span><span class="tag">Reporting</span></div>
+        </article>
+
+        <article class="card">
+          <div class="icon coral"><i class="fa-solid fa-headset"></i></div>
+          <h3 class="service-title">Virtual Assistance</h3>
+          <p class="service-desc">Inbox triage, scheduling, light bookkeeping and administrative support to free your time.</p>
+          <div class="tags"><span class="tag">Admin</span><span class="tag">Research</span><span class="tag">Bookkeeping</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why choose NovaWave</h2>
+        <p>Small team, big impact — senior talent, measurable results, and an emphasis on clarity and speed. We focus on the outcomes that matter.</p>
+      </div>
+
+      <div class="why reveal">
+        <div>
+          <ul style="padding-left:0;">
+            <li><i class="fa-solid fa-check" style="color:var(--accent-2); margin-right:10px;"></i><strong>Strategy-first.</strong> We measure leads, revenue and retention — not vanity metrics.</li>
+            <li><i class="fa-solid fa-check" style="color:var(--accent-2); margin-right:10px;"></i><strong>Accessible & performant.</strong> Core Web Vitals and WCAG-aware design included.</li>
+            <li><i class="fa-solid fa-check" style="color:var(--accent-2); margin-right:10px;"></i><strong>Transparent process.</strong> Milestones, demos, and async updates keep you informed without meeting overload.</li>
+            <li><i class="fa-solid fa-check" style="color:var(--accent-2); margin-right:10px;"></i><strong>Client-first support.</strong> Clear communication and reliable SLAs.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">What you can expect</h3>
+          <ul style="color:var(--muted)">
+            <li>Discovery & requirements workshop</li>
+            <li>Prototype & content plan</li>
+            <li>Iterative build with weekly demos</li>
+            <li>QA, performance pass & launch</li>
+            <li>30-day warranty & support</li>
+          </ul>
+          <a class="btn" style="margin-top:16px" href="#quote"><i class="fa-regular fa-handshake"></i> Start a project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS + RECENT WORKS -->
+  <section id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our process</h2>
+        <p>Simple, collaborative and focused on de-risking decisions early — clear phases that keep momentum and reduce surprises.</p>
+      </div>
+
+      <div class="process-wrap reveal">
+        <div class="timeline" id="timeline">
+          <div class="step">
+            <div class="num">1</div>
+            <strong>Discover</strong>
+            <p style="color:var(--muted)">Define goals, users and scope. Audit analytics and tech stack.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <strong>Design</strong>
+            <p style="color:var(--muted)">Wireframes → clickable prototype → visual system and components.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <strong>Build</strong>
+            <p style="color:var(--muted)">Hand-coded frontend, CMS/API integration, and tracking hooks.</p>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <strong>Validate</strong>
+            <p style="color:var(--muted)">Accessibility, performance, cross-browser and device QA.</p>
+          </div>
+          <div class="step">
+            <div class="num">5</div>
+            <strong>Launch & Grow</strong>
+            <p style="color:var(--muted)">Deploy, measure, and iterate campaigns and content for growth.</p>
+          </div>
+        </div>
+
+        <!-- Recent works slider (3 items + arrows) -->
+        <div style="margin-top:18px; position:relative;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px">
+            <h3 style="margin:0">Recent work</h3>
+            <div class="slider-controls">
+              <button class="btn ghost" id="casesPrev" aria-label="Previous case"><!-- SVG fallback for arrows -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="btn ghost" id="casesNext" aria-label="Next case">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="cases-slider">
+            <div class="slides" id="casesSlides">
+              <article class="slide">
+                <img src="https://i.postimg.cc/RV9HHPj6/image.png" alt="SaaS Dashboard">
+                <div class="content">
+                  <h4>SaaS Analytics Dashboard</h4>
+                  <p style="color:var(--muted)">Revamped onboarding and pricing page; +38% trial conversions in 60 days.</p>
+                  <div class="meta"><span class="tag">UI/UX</span><span class="tag">CRO</span></div>
+                </div>
+              </article>
+
+              <article class="slide">
+                <img src="https://i.postimg.cc/8PKzztDV/image.png" alt="eCommerce store">
+                <div class="content">
+                  <h4>eCommerce Growth Engine</h4>
+                  <p style="color:var(--muted)">Built fast storefront & email flows; +24% revenue from organic search.</p>
+                  <div class="meta"><span class="tag">Web Dev</span><span class="tag">SEO</span></div>
+                </div>
+              </article>
+
+              <article class="slide">
+                <img src="https://i.postimg.cc/NF0whvK2/image.png" alt="Healthcare app">
+                <div class="content">
+                  <h4>Healthcare Mobile App</h4>
+                  <p style="color:var(--muted)">Reimagined patient flows and accessibility; +32 NPS and fewer support tickets.</p>
+                  <div class="meta"><span class="tag">Mobile</span><span class="tag">Accessibility</span></div>
+                </div>
+              </article>
+
+              <!-- new 3 recent works as requested -->
+              <article class="slide">
+                <img src="https://i.postimg.cc/R0my5x8C/image.png" alt="Product landing">
+                <div class="content">
+                  <h4>Product Landing Refresh</h4>
+                  <p style="color:var(--muted)">Landing refresh + A/B approach to headline and CTA; improved CVR by 26%.</p>
+                  <div class="meta"><span class="tag">CRO</span><span class="tag">Design</span></div>
+                </div>
+              </article>
+
+              <article class="slide">
+                <img src="https://i.postimg.cc/vmPJWSqQ/image.png" alt="Brand campaign">
+                <div class="content">
+                  <h4>Brand Campaign</h4>
+                  <p style="color:var(--muted)">Multichannel creative and launch campaign; strong engagement and shareability.</p>
+                  <div class="meta"><span class="tag">Creative</span><span class="tag">Social</span></div>
+                </div>
+              </article>
+
+              <article class="slide">
+                <img src="https://i.postimg.cc/RCwPmD7N/image.png" alt="Mobile startup">
+                <div class="content">
+                  <h4>Mobile Startup MVP</h4>
+                  <p style="color:var(--muted)">MVP design and build for investor demo; launched in 8 weeks with analytics baseline.</p>
+                  <div class="meta"><span class="tag">MVP</span><span class="tag">Analytics</span></div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <h2>What clients say</h2>
+        <p>Proof beats promises. Here’s what partners and founders share about working with us.</p>
+      </div>
+
+      <div style="position:relative;">
+        <div class="reviews reveal" id="reviewsTrack" aria-live="polite">
+          <div class="review">
+            <div class="stars" style="color: #ffd166;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p>“The site looks incredible and loads blazing fast. Our demo requests doubled within a month.”</p>
+            <div class="reviewer" style="margin-top:12px; color:var(--muted)"><img src="https://i.pravatar.cc/100?img=12" alt="Jenna" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.06); margin-right:10px"> Jenna Ortiz — VP Marketing</div>
+          </div>
+
+          <div class="review">
+            <div class="stars" style="color: #ffd166;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+            <p>“They nailed our brand voice and UI. Communication was crisp, deadlines were met, and the results speak for themselves.”</p>
+            <div class="reviewer" style="margin-top:12px; color:var(--muted)"><img src="https://i.pravatar.cc/100?img=22" alt="Samir" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.06); margin-right:10px"> Samir Patel — Founder</div>
+          </div>
+
+          <div class="review">
+            <div class="stars" style="color: #ffd166;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p>“Our organic traffic is up 40% and paid CAC is down. The team is proactive and data-driven.”</p>
+            <div class="reviewer" style="margin-top:12px; color:var(--muted)"><img src="https://i.pravatar.cc/100?img=32" alt="Leah" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.06); margin-right:10px"> Leah Kim — Growth Lead</div>
+          </div>
+
+          <div class="review">
+            <div class="stars" style="color: #ffd166;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p>“Top-tier craftsmanship. The motion details and performance optimizations are next level.”</p>
+            <div class="reviewer" style="margin-top:12px; color:var(--muted)"><img src="https://i.pravatar.cc/100?img=42" alt="Diego" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.06); margin-right:10px"> Diego Alvarez — Product Director</div>
+          </div>
+        </div>
+
+        <div style="position:absolute; top: -6px; right:6px; display:flex; gap:8px">
+          <button class="btn ghost" id="revPrev" aria-label="Prev review"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="btn ghost" id="revNext" aria-label="Next review"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About NovaWave</h2>
+        <p>We’re a distributed team of designers, developers, and strategists who care about outcomes and the craft it takes to get there.</p>
+      </div>
+
+      <div class="grid two reveal">
+        <div class="card about">
+          <h3 style="margin-top:0">Mission & values</h3>
+          <p>We build thoughtful digital experiences that are inclusive, fast and easy to use. We value clarity, curiosity and measurable impact. Our team focuses on design systems instead of one-offs — creating consistent, maintainable products that scale. We believe strong strategy + elegant design + careful engineering produce better outcomes than flashy visuals alone.</p>
+
+          <p style="color:var(--muted); margin-top:12px">We partner with startups and growth teams at enterprise organisations to deliver meaningful product improvements. From discovery to launch and growth, our approach centers the user and business goals — we measure, then optimise.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="icon"><i class="fa-solid fa-user-gear"></i></div>
+            <strong>Senior talent only</strong>
+            <p class="service-desc">No juniors learning on your dime. Direct access to the people doing the work.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon teal"><i class="fa-solid fa-gauge-high"></i></div>
+            <strong>Performance baked in</strong>
+            <p class="service-desc">Core Web Vitals, accessibility and security are part of our definition of done.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (repeat / short) -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Let's build something great</h2>
+        <p>Tell us about your goals and we’ll suggest the highest-leverage next steps.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <form id="contactForm" novalidate>
+            <label for="cname">Name</label>
+            <input id="cname" name="name" placeholder="Your full name" required>
+
+            <label for="cemail">Email</label>
+            <input id="cemail" name="email" type="email" placeholder="you@company.com" required>
+
+            <label for="cmessage">Project details</label>
+            <textarea id="cmessage" name="message" placeholder="What are you trying to achieve?" required></textarea>
+
+            <button class="btn" type="submit"><i class="fa-regular fa-paper-plane"></i> Send Message</button>
+            <p id="formNote" role="status" aria-live="polite" style="margin-top:8px;color:var(--muted)"></p>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">Contact info</h3>
+          <p style="color:var(--muted)">We reply within one business day.</p>
+          <p><i class="fa-solid fa-location-dot" style="color:var(--accent-2); margin-right:8px"></i>548 Market St, PMB 12345, San Francisco, CA 94104</p>
+          <p><i class="fa-solid fa-phone" style="color:var(--accent-2); margin-right:8px"></i>(415) 555-0199</p>
+          <p><i class="fa-regular fa-envelope" style="color:var(--accent-2); margin-right:8px"></i>hello@novawave.digital</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About</h4>
+          <p style="color:var(--muted)">NovaWave Digital builds modern, high-performance products — from discovery to delivery. We focus on measurable outcomes and elegant, maintainable solutions.</p>
+        </div>
+
+      </div>
+
+      <div style="margin-top:18px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+        <div>© <span id="year"></span> NovaWave Digital. All rights reserved.</div>
+        <div style="color:var(--muted)">Made with <i class="fa-solid fa-heart" style="color:var(--accent-3)"></i> for performance & accessibility.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Reveal on scroll */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Nav active on scroll */
+    const sections = [...document.querySelectorAll('section[id]')];
+    const navLinks = [...document.querySelectorAll('#navlinks a')];
+    function setActive(){
+      const offset = 140;
+      let current = sections[0].id;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top - offset <= 0) current = sec.id;
+      });
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    }
+    document.addEventListener('scroll', setActive, {passive:true});
+    window.addEventListener('load', setActive);
+
+    /* Back to top visibility */
+    const back = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) back.classList.add('show'); else back.classList.remove('show');
+    }, {passive:true});
+    back.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* FAQ removed - replaced by quote */
+
+    /* Reviews carousel */
+    (function(){
+      const track = document.getElementById('reviewsTrack');
+      const prev = document.getElementById('revPrev');
+      const next = document.getElementById('revNext');
+      if (!track) return;
+      let index = 0;
+      const cards = [...track.children];
+      function slide(i = 1){
+        index = (index + i + cards.length) % cards.length;
+        const width = cards[0].getBoundingClientRect().width + 18;
+        track.scrollTo({ left: index * width, behavior: 'smooth' });
+      }
+      prev.addEventListener('click', () => slide(-1));
+      next.addEventListener('click', () => slide(1));
+      let auto = setInterval(slide, 4500);
+      track.addEventListener('mouseenter', ()=> clearInterval(auto));
+      track.addEventListener('mouseleave', ()=> auto = setInterval(slide, 4500));
+    })();
+
+    /* Cases slider */
+    (function(){
+      const slides = document.getElementById('casesSlides');
+      const prev = document.getElementById('casesPrev');
+      const next = document.getElementById('casesNext');
+      if(!slides) return;
+      const items = [...slides.children];
+      let idx = 0;
+      function slide(i = 1){
+        idx = (idx + i + items.length) % items.length;
+        const w = items[0].getBoundingClientRect().width + 18;
+        slides.scrollTo({ left: idx * w, behavior: 'smooth' });
+      }
+      prev.addEventListener('click', ()=> slide(-1));
+      next.addEventListener('click', ()=> slide(1));
+      // keyboard
+      prev.addEventListener('keyup', (e)=> { if(e.key === 'Enter') slide(-1) });
+      next.addEventListener('keyup', (e)=> { if(e.key === 'Enter') slide(1) });
+    })();
+
+    /* Quote form (demo validation only) */
+    const quoteForm = document.getElementById('quoteForm');
+    const quoteNote = document.getElementById('quoteNote');
+    if(quoteForm){
+      quoteForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(quoteForm);
+        const name = (data.get('name')||'').trim();
+        const email = (data.get('email')||'').trim();
+        const message = (data.get('message')||'').trim();
+        if(!name || !email || !message){
+          quoteNote.textContent = 'Please complete name, email and a short message.';
+          quoteNote.style.color = '#ffd166';
+          return;
+        }
+        // rudimentary email check
+        if(!/[^@\s]+@[^@\s]+\.[^@\s]+/.test(email)){
+          quoteNote.textContent = 'Please enter a valid email.';
+          quoteNote.style.color = '#ffd166';
+          return;
+        }
+        quoteNote.textContent = 'Thanks — your request has been received. We’ll reply within one business day.';
+        quoteNote.style.color = '#a8f0cf';
+        quoteForm.reset();
+      });
+    }
+
+    /* Contact form (demo) */
+    const contactForm = document.getElementById('contactForm');
+    const formNote = document.getElementById('formNote');
+    if(contactForm){
+      contactForm.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const f = new FormData(contactForm);
+        const name = (f.get('name')||'').trim();
+        const email = (f.get('email')||'').trim();
+        const message = (f.get('message')||'').trim();
+        if(!name || !email || !message){
+          formNote.textContent = 'Please complete all fields.';
+          formNote.style.color = '#ffd166';
+          return;
+        }
+        if(!/[^@\s]+@[^@\s]+\.[^@\s]+/.test(email)){
+          formNote.textContent = 'Please enter a valid email.';
+          formNote.style.color = '#ffd166';
+          return;
+        }
+        formNote.textContent = 'Thanks! Your message has been queued. We reply within one business day.';
+        formNote.style.color = '#a8f0cf';
+        contactForm.reset();
+      });
+    }
+
+    /* ensure all icons display: if FA failed, fallback critical icons with inline SVG */
+    // (mostly handled by using Font Awesome CDN; fallback would be manual replacements if needed)
+
+    // keep nav link clicks smooth, close any open mobile nav (if added later)
+    document.querySelectorAll('#navlinks a').forEach(a => {
+      a.addEventListener('click', (ev) => {
+        // ensure active class set on click
+        document.querySelectorAll('#navlinks a').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      });
+    });
+
+    // small accessibility: allow keyboard nav for slider controls
+    ['revPrev','revNext','casesPrev','casesNext'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) el.setAttribute('tabindex','0');
+    });
+
+  </script>
+</body>
+</html>
